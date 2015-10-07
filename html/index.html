@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+        <meta charset="utf-8">
+        <title>Snake!</title>
+        <link rel="stylesheet" href="../css/snake.css" type="text/css">
+    </head>
+    <body>
+
+      <h1>SNAKE</h1>
+
+      <script src="../js/jquery.js"></script>
+      <script src="../js/gamelogic/util.js"></script>
+      <script src="../js/gamelogic/snakes.js"></script>
+      <script src="../js/gamelogic/board.js"></script>
+      <script src="../js/view.js"></script>
+
+      <main class="gamespace"></main>
+
+      <script>
+        $(function () {
+          var view = new Snake.View($(".gamespace"))
+        });
+      </script>
+
+    </body>
+  </html>
