@@ -22,12 +22,8 @@
     var headIdx = this.segs.length - 1
     var dirVel = Snake.Util.dirVel(this.dir, Snakes.VELOCITY)
     var newSeg = Snake.Util.add(this.segs[headIdx], dirVel);
-    if (this.gameOver(newSeg)) {
-      // game ending logic
-    } else {
-      this.segs.push(newSeg)
-      this.removeTail()
-    }
+    this.segs.push(newSeg)
+    this.removeTail()
   }
 
   Snakes.prototype.removeTail = function () {
@@ -38,10 +34,10 @@
     }
   }
 
-  Snakes.prototype.gameOver = function (move) {
-    if (Snake.Util.outOfBounds(move)) {
+  Snakes.prototype.gameOver = function () {
+    if (Snake.Util.outOfBounds(this.head())) {
       return true;
-    } else if (this.hitSelf(move)) {
+    } else if (this.hitSelf(this.head())) {
       return true;
     }
     return false;
@@ -50,11 +46,11 @@
   Snakes.prototype.hitSelf = function (move) {
     for (var i = 0; i < this.segs.length; i++) {
       if (this.segs[i] === move) {
+      } else if ((Snake.Util.equal(this.segs[i], move))) {
         return true;
-      } else {
-        return false;
       }
     }
+    return false;
   }
 
   Snakes.prototype.head = function () {
@@ -68,9 +64,4 @@
         this.dir = dir
     }
   }
-
-  // Snakes.prototype.segments = function () {
-  //   return this.segs
-  // }
-
 })();

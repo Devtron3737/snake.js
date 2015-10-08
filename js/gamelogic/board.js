@@ -10,12 +10,14 @@
       this.grape = new Snake.Grape({
         pos: Snake.Util.randomPos()
       })
+      this.points = 0;
+      this.endGame = false;
       setInterval(this.grapeDrop.bind(this), Board.GRAPE_DROP_TIMER);
   }
 
+  Board.DIM_Y = 30;
+  Board.DIM_X = 30;
 
-  Board.DIM_Y = 40;
-  Board.DIM_X = 40;
   Board.GRAPE_DROP_TIMER =  50 * 1000
 
   Board.prototype.setupBoard = function () {
@@ -38,18 +40,23 @@
   //DRY THIS UP
 
   Board.prototype.update = function () {
-    this.grapeEat();
-    this.grid = []
-    this.setupBoard()
-    this.updateClasses(this.snake.segs, "snaked");
-    // this.updateClasses(this.grape, "graped")
-    this.grid[this.grape.pos[0]][this.grape.pos[1]] = "graped"
+    if (this.snake.gameOver()) {
+      this.endGame = true
+    } else {
+        this.grapeEat();
+        this.grid = []
+        this.setupBoard()
+        this.updateClasses(this.snake.segs, "snaked");
+        // this.updateClasses(this.snake.segs, "shake-little");
+        this.grid[this.grape.pos[0]][this.grape.pos[1]] = "graped"
+    }
   }
-  
+
   Board.prototype.grapeEat = function () {
     var head = this.snake.head();
     if (Snake.Util.equal(head, this.grape.pos)) {
       this.snake.growTurns += 3
+      this.points += 3
       this.grapeDrop()
     }
   }
@@ -59,14 +66,10 @@
       pos: Snake.Util.randomPos()
     })
     for (var i = 0; i < this.snake.segs; i++) {
-      if (grape.pos === this.snake.segs[i]) {
+      if (Snake.Util.equal(grape.pos, this.snake.segs[i])) {
         this.grapeDrop()
       }
     }
     this.grape = grape;
   }
-
-  // Board.prototype.grapeShift = function () {
-  //   this.grapes.shift()
-  // }
 })();

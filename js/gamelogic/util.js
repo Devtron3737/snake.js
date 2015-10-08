@@ -54,8 +54,8 @@
   }
 
   Util.outOfBounds = function (position) {
-    for (var loc = 0; loc < 2; loc++) {
-      if (position[loc] > (Snake.Board.DIM_Y - 1) || position[loc] < 0) {
+    for (var axis = 0; axis < 2; axis++) {
+      if (position[axis] > (Snake.Board.DIM_Y - 1) || position[axis] < 0) {
         return true;
       }
     }

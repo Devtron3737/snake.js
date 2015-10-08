@@ -11,7 +11,7 @@
   }
 
   // View.STEP_TIMER = 500
-  View.STEP_TIMER = 240;
+  View.STEP_TIMER = 200;
 
  //arrows and WASD
   View.CODE_DIRS = {
@@ -41,18 +41,41 @@
   }
 
   View.prototype.draw = function () {
-    this.$el.empty();
+    if (this.board.endGame) {
+      this.drawEnd()
+    } else {
+      this.drawStep();
+    }
+  }
+
+  View.prototype.drawStep = function () {
+    this.drawPoints();
     for (var row = 0; row < this.board.grid.length; row++) {
       var $row = $("<ul></ul>")
       for (var col = 0; col < this.board.grid[row].length; col++) {
-        //status adds "empty" or "snaked" class
+        //status adds "empty", "graped", or "snaked" class
         var status = this.board.grid[row][col];
         var $col = $("<li></li>")
         $col.addClass(status);
-        $col.data("pos", [row, col]);
         $row.append($col);
       }
       this.$el.append($row)
     }
+  }
+
+  View.prototype.drawPoints = function () {
+    this.$el.empty();
+    var $pointBox = $("<section class='points'></section")
+    $pointBox.text(this.board.points + " points")
+    this.$el.append($pointBox)
+  }
+
+
+  View.prototype.drawEnd = function () {
+    this.drawStep();
+    var $endBox = $("<section class='gameover'>Game Over</section>")
+    $endBox.text("Gameover")
+    var $replayLink = $("<a class='replay' href='devtron718.github.io/snake'>Play again?!</a>")
+    this.$el.append($endBox, $replayLink)
   }
 })();
