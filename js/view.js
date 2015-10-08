@@ -10,8 +10,8 @@
     $(window).on("keydown", this.handleKeyEvent.bind(this));
   }
 
-  View.STEP_TIMER = 500
-  // View.STEP_TIMER = 120
+  // View.STEP_TIMER = 500
+  View.STEP_TIMER = 240;
 
  //arrows and WASD
   View.CODE_DIRS = {
