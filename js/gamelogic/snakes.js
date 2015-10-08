@@ -6,7 +6,7 @@
   var Snakes = Snake.Snakes = function () {
     this.dir = Snakes.DIFFS["W"]
     this.segs = [Snake.Util.center()]
-    this.growing = false;
+    this.growTurns = 0;
   }
 
   Snakes.DIFFS = {
@@ -31,7 +31,9 @@
   }
 
   Snakes.prototype.removeTail = function () {
-    if (this.growing === false) {
+    if (this.growTurns > 0) {
+      this.growTurns -= 1
+    } else {
       this.segs.shift();
     }
   }
@@ -53,6 +55,10 @@
         return false;
       }
     }
+  }
+
+  Snakes.prototype.head = function () {
+    return this.segs[this.segs.length - 1]
   }
 
   Snakes.prototype.turn = function (dir) {

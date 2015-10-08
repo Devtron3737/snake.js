@@ -6,10 +6,12 @@
   var View = Snake.View = function ($el) {
     this.$el = $el;
     this.board = new Snake.Board;
-    // window.setInterval(this.step.bind(this), 120)
-    window.setInterval(this.step.bind(this), 500)
+    window.setInterval(this.step.bind(this), View.STEP_TIMER)
     $(window).on("keydown", this.handleKeyEvent.bind(this));
   }
+
+  View.STEP_TIMER = 500
+  // View.STEP_TIMER = 120
 
  //arrows and WASD
   View.CODE_DIRS = {
@@ -34,7 +36,7 @@
   View.prototype.step = function () {
     var snake = this.board.snake
     snake.move();
-    this.board.update(snake.segs);
+    this.board.update();
     this.draw();
   }
 

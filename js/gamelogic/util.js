@@ -14,11 +14,30 @@
     return [newVelY, newVelX]
   }
 
+  Util.equal = function (coord1, coord2) {
+    if (coord1[0] !== coord2[0]) {
+      return false;
+    } else if (coord1[1] !== coord2[1]) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   Util.randomPos = function () {
     var xRand = Math.floor(Math.random() * Snake.Board.DIM_X)
     var yRand = Math.floor(Math.random() * Snake.Board.DIM_Y)
     return [yRand, xRand]
   }
+
+    Util.inherits = function (baseClass, childClass) {
+      var Surrogate = function () {
+      };
+      Surrogate.prototype = baseClass.prototype;
+      childClass.prototype = new Surrogate
+
+      childClass.prototype.constructor = childClass
+    }
 
   //adds velocity to coordinate position
   Util.add = function (coord, velocity) {

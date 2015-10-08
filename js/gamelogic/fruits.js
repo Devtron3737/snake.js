@@ -1,13 +1,28 @@
 (function () {
-  if typeof Snake === "undefined" {
+  if (typeof Snake === "undefined") {
     window.Snake = {}
   }
 
-  var Fruit = Snake.Fruit = function () {
-    this.pos = Snake.Util.randomPos();
+  var Fruit = Snake.Fruit = function (attributes) {
+    this.pos = attributes.pos
   }
 
-})
+})();
+
+(function () {
+  if (typeof Snake === "undefined") {
+    Snake = {}
+  }
+
+  var Grape = Snake.Grape = function (attributes) {
+    attributes.pos = attributes.pos || Snake.Util.randomPos();
+    Snake.Fruit.call(this, attributes)
+  }
+
+  Snake.Util.inherits(Snake.Fruit, Grape)
+
+
+})();
 
 (function () {
   if (typeof Snake === "undefined") {
@@ -22,19 +37,10 @@
   // you eat a few grapes. after 5 grapes, a grapefruit pops up
   // for 10 seconds
   // grapes pop up every 6 secs, and delete afer 10 secs
-  var Grapefruit = Snake.Grapefruit = function () {
-    this.pos = Snake.Util.randomPos();
+  var Grapefruit = Snake.Grapefruit = function (attributes) {
   }
 
-})();
+  Snake.Util.inherits(Snake.Fruit, Grapefruit)
 
-(function () {
-  if (typeof Snake === "undefined") {
-    Snake = {}
-  }
-
-  var Grape = Snake.Grape = function () {
-    this.pos = Snake.Util.randomPos();
-  }
 
 })();
