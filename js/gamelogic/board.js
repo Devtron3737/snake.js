@@ -61,14 +61,24 @@
     }
   }
 
+  Board.prototype.grapeCheck = function (grape) {
+    for (var i = 0; i < this.snake.segs; i++) {
+      if (Snake.Util.equal(grape.pos, this.snake.segs[i])) {
+        return true;
+      }
+    }
+    return false;
+  }
+  //grape checks not working
+
   Board.prototype.grapeDrop = function () {
     var grape = new Snake.Grape({
       pos: Snake.Util.randomPos()
     })
-    for (var i = 0; i < this.snake.segs; i++) {
-      if (Snake.Util.equal(grape.pos, this.snake.segs[i])) {
-        this.grapeDrop()
-      }
+    while (this.grapeCheck(grape)) {
+      grape = new Snake.Grape({
+        pos: Snake.Util.randomPos()
+      })
     }
     this.grape = grape;
   }
