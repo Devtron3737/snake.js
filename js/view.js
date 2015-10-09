@@ -75,7 +75,7 @@
     this.drawStep();
     var $endBox = $("<section class='gameover'>Game Over</section>")
     $endBox.text("Gameover")
-    var $replayLink = $("<a class='replay' href='devtron718.github.io/snake'>Play again?!</a>")
+    var $replayLink = $("<a class='replay' href='http://devtron718.github.io/snake.js/'>Play again?!</a>")
     this.$el.append($endBox, $replayLink)
   }
 })();
