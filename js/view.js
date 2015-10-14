@@ -11,7 +11,7 @@
   }
 
   // View.STEP_TIMER = 500
-  View.STEP_TIMER = 200;
+  View.STEP_TIMER = 100;
 
  //arrows and WASD
   View.CODE_DIRS = {
