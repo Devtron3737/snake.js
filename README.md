@@ -5,3 +5,4 @@
 [link]: http://www.devinmiranda.xyz/snake.js
 
 Simple Snake game for the browser, created with JavaScript.
+Use "awsd" to move!
