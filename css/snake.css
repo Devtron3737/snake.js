@@ -18,58 +18,54 @@ span, article, footer, time, small {
 
 body {
   font-family: 'Shadows Into Light', cursive;
+  font-size: 25px;
   padding: 0;
   margin: 0;
 }
 
 header {
-  content: "";
   display: block;
-  clear: both;
 }
 
 h1 {
-  /*padding: 0;*/
-  /*margin: 0;*/
+  display: inline-block;
   font-size: 55px;
-  display: block;
-  float: left;
+  position: relative;
+  top: 35px;
+  left: 20px;
 }
 
 h2 {
+  display: inline-block;
   font-size: 25px;
-  /*float: left;*/
   position: relative;
   left: 260px;
   top: 35px;
 }
 
+#instructions {
+  position: absolute;
+  left: 40px;
+  top: 600px;
+}
+
 main {
-  width: 800px;
-  height: 800px;
-  /*background: blue;*/
-  /*margin-left: auto;
-  margin-right: auto;*/
+  position: absolute;
+  left: 20px;
+  top: 100px;
+  width: 700px;
 }
 
 ul {
   display: block;
-  /*display: inline-block;*/
-  padding: 0;
-  margin: 0;
-  width: 800px;
   height: 16px;
-  float: left;
-  /*background: blue;*/
 }
 
 li {
-  display: block;
+  display: inline-block;
   width: 16px;
   height: 16px;
-  /*border: 1px solid black;*/
   background: red;
-  float: left;
 }
 
 .snaked {
@@ -80,31 +76,18 @@ li {
   background: purple;
 }
 
-.empty {
-
-}
-
 .points {
   position: absolute;
-  /*display: block;*/
-  /*float: right;*/
-  /*text-align: center;*/
   font-size: 40px;
-  /*width: auto;*/
-  /*height: auto;*/
-  /*height: 40px;*/
-  /*width: 80px;*/
-  /*border-radius: 20%;*/
   top: 70px;
   left: 500px;
-  padding: 0;
-  margin: 0;
   border-bottom: 3px solid gray;
 }
 
 .gameover {
   position: absolute;
-  top: 88px;
+  left: 0px;
+  top: 10px;
   text-align: center;
   background: rgba(0, 0, 0, 0.7);
   font-size: 100px;
@@ -115,10 +98,12 @@ li {
 }
 
 .replay {
+  position: absolute;;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
   color: white;
-  position: absolute;
-  top: 290px;
-  text-align: center;
   font-size: 50px;
 }
 
